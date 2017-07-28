@@ -12,6 +12,7 @@ class CharacterGraph:
     name_in_section = []  # 存储段落中人物的出现情况
     relations = {}
 
+    #读取名字列表和文本文件并分段
     def __init__(self, nameFile, novleFile, division_num=3000, scope=sys.maxsize):
 
         # 设置分割段落长度
@@ -47,6 +48,7 @@ class CharacterGraph:
                     nameInSection = {}
         time.sleep(0.01)
 
+    #获取对应的人物关系
     def getRelationship(self):
         for section in self.name_in_section:
             if (len(section) <= 1):
@@ -55,6 +57,7 @@ class CharacterGraph:
             sorted(items)
             s = 0
 
+            #TODO:improve the algorithm
             for i1, v1 in enumerate(items[:-2]):
                 for i2, v2 in enumerate(items[i1 + 1:]):
                     if ((v1, v2) not in self.relations):
@@ -63,17 +66,8 @@ class CharacterGraph:
                         self.relations[(v1, v2)] += section[v1]+section[v2]
 
 
-            # for i1, v1 in enumerate(items[:-2]):
-            #     for i2, v2 in enumerate(items[i1 + 1:]):
-            #         s += section[v1] * section[v2]
-            # for i1, v1 in enumerate(items[:-2]):
-            #     for i2, v2 in enumerate(items[i1 + 1:]):
-            #         if ((v1, v2) not in self.relations):
-            #             self.relations.setdefault((v1, v2), section[v1] * section[v2] * 100.0 / s)
-            #         else:
-            #             self.relations[(v1, v2)] += section[v1] * section[v2] * 100.0 / s
 
-
+    #保存节点文件和边文件,用于gephi绘图
     def saveGephiData(self,threshold=0):
         dirName = "Gephi"
         import os
@@ -93,7 +87,7 @@ class CharacterGraph:
         print("Save finished.")
 
 if (__name__ == "__main__"):
-    cg = CharacterGraph(nameFile='example/name_list.txt', novleFile="example/pfdsj.txt")
+    cg = CharacterGraph(nameFile='example_2/name_list.txt', novleFile="example_2/zx.txt",division_num=5000)
     cg.getRelationship()
     # print('\n'.join([str(x) + "=%d" % cg.relations[x] for x in cg.relations if (cg.relations[x] != 0)]))
     # print([(x,cg.name_list[x]) for x in cg.name_list if cg.name_list[x]!=0])
