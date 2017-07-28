@@ -15,4 +15,9 @@ CharacterPickUp -- 人物关系提取
 
 - 超过阈值则认为相关
 
+示例
+---
+![平凡的世界人物关系](https://github.com/gamijin0/NovelAnalysis/raw/master/example_1/pfdsj.png)
+
+
 
