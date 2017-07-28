@@ -17,8 +17,11 @@ CharacterPickUp -- 人物关系提取
 
 示例
 ---
+[平凡的世界]
+
 ![平凡的世界人物关系](https://github.com/gamijin0/NovelAnalysis/raw/master/example_1/pfdsj.png)
 
+[诛仙]
 
 ![诛仙人物关系](https://github.com/gamijin0/NovelAnalysis/raw/master/example_2/zx.png)
 
